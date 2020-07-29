@@ -85,11 +85,8 @@ WSGI_APPLICATION = 'multi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500, require_ssl=True))
+
 
 
 # Password validation
